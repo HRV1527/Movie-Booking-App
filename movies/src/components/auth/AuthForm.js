@@ -1,9 +1,17 @@
 import { Button, Dialog, FormLabel, IconButton, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
+import { useNavigate} from 'react-router-dom';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 const labelStyle={mt:1,mb:1};
 const AuthForm = ({onSubmit ,isAdmin }) => {
+    const navigate = useNavigate();
+
+    const navigateHome = () => {
+        // 👇️ navigate to /
+        navigate('/');
+      };
+
     const [inputs, setinputs] = useState({
         name:"",
         email:"",
@@ -22,14 +30,12 @@ const AuthForm = ({onSubmit ,isAdmin }) => {
     const handleSubmit=(e)=>{
         e.preventDefault();
         onSubmit({inputs,signup:isAdmin?false:isSignup});
-
-        
     }
 
   return (
    <Dialog paperProps={{style:{borderRadius:20}}}open={true}>
    <Box sx={{ml:'auto',padding:1}}> 
-    <IconButton>
+    <IconButton onClick={navigateHome}>
         <CloseRoundedIcon/>
     </IconButton>
     

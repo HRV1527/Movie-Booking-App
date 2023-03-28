@@ -60,7 +60,7 @@ if(!isPasswordCorrect)
 {
     return res.status(400).json({message:"invalid password"});
 }
-const token=jwt.sign({id:existingAdmin._id},process.env.SECERT_KEY,{
+const token=jwt.sign({id:existingAdmin._id},process.env.SECRET_KEY,{
     expiresIn:"7d"
 })
 

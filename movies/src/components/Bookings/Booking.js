@@ -40,11 +40,15 @@ const Booking = () => {
                 <Fragment>
                     
                     <Typography padding={3}
-                        fontFamily="fantasy"
+                        fontFamily='Ubuntu Condensed'
+                        display={'flex'}
+                        justifyContent='center'
                         variant='h4'
                         textAlign={'center'}
                     >Book Tickets of movie:
+                    <Typography paddingLeft={4} variant='h4' fontFamily='Helvetica Neue'>
                         {movie.title}
+                        </Typography> 
                     </Typography>
 
 
@@ -68,7 +72,7 @@ const Booking = () => {
                                     paddingTop={2}> {movie.description}
                                 </Typography>
                                 <Typography fontWeight={'bold'} marginTop={1}>
-                                    starrer:
+                                    Starrer:
                                     {movie.actors.map((actor) => " " + actor + "")}
                                 </Typography>
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {AppBar, Toolbar,Box, Tabs, Tab, Autocomplete, TextField, IconButton} from '@mui/material'
-import MovieIcon from '@mui/icons-material/Movie'
 import { getAllMovies } from '../api-helper/api-helpers'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -29,8 +28,8 @@ dispatch(isAdmin?adminActions.logout():userActions.logout());
   <AppBar position="sticky" sx={{bgcolor:'#2b2b42'}}>
     <Toolbar>
         <Box width={"20%"}>
-                    <IconButton LinkComponent={Link} to="/" >
-                        <MovieIcon />
+                    <IconButton sx={{color: '#fff'}} LinkComponent={Link} to="/" >
+                        Cinephilia
                         </IconButton>
                 </Box>
     
@@ -44,32 +43,39 @@ dispatch(isAdmin?adminActions.logout():userActions.logout());
       />
     </Box>
     <Box display={"flex"}>
-    <Tabs textColor='inherit' indicatorColor='secondary' value={value} onChange={(e,val)=>{setvalue(val)}}>
-    
-    <Tab LinkComponent={Link} to='/movies' label ="All Movies"/>
 
 { !isAdminLoggedIn && !isUserLoggedIn && <>
-
-  <Tab LinkComponent={Link} to='/auth' label="Auth"/>
-<Tab LinkComponent={Link} to='/admin' label="Admin"/>
+  <Tabs textColor='inherit' indicatorColor='secondary' value={value} onChange={(e,val)=>{setvalue(val)}}>
+    <Tab LinkComponent={Link} to='/movies' label ="All Movies"/>
+   <Tab LinkComponent={Link} to='/auth' label="Auth"/>
+   <Tab LinkComponent={Link} to='/admin' label="Admin"/>
+</Tabs>
 </>
 }
 
+       
         {isUserLoggedIn && (
           <>
+          <Tabs textColor='inherit' indicatorColor='secondary' value={value} onChange={(e,val)=>{setvalue(val)}}>
+          <Tab LinkComponent={Link} to='/movies' label ="All Movies"/>
           <Tab LinkComponent={Link} to='/user' label="Profile"/>
           <Tab onClick={()=>logout(false)} LinkComponent={Link} to='/' label="Logout"/>
+          </Tabs>
           </>
         )}
+      
         {isAdminLoggedIn && (
           <>
+          <Tabs textColor='inherit' indicatorColor='secondary' value={value} onChange={(e,val)=>{setvalue(val)}}>
+          <Tab LinkComponent={Link} to='/movies' label ="All Movies"/>
           <Tab LinkComponent={Link} to='/add' label="Add Movie"/>
           <Tab LinkComponent={Link} to='/user-admin' label="Profile"/>
           <Tab onClick={()=>logout(true)} LinkComponent={Link} to='/' label="Logout"/>
+          </Tabs>
           </>
         )}
 
-    </Tabs>
+   
 
     </Box>
     </Toolbar>

@@ -12,7 +12,7 @@ const addMovies=async(req,res)=>{
     }
     console.log(extractToken);
     let adminId;
-    jwt.verify(extractToken,process.env.SECERT_KEY,(err,decrypted)=>{
+    jwt.verify(extractToken,process.env.SECRET_KEY,(err,decrypted)=>{
         if(err)
         {
             return res.status(401).json({

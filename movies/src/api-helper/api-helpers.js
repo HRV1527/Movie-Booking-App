@@ -1,6 +1,6 @@
 import axios from 'axios';
 export const getAllMovies=async()=>{
-const resp=await axios.get("/movies")
+const resp=await axios.get("/movies/")
 .catch(err=> console.log(err))
 
 if (resp.status!== 200)
